@@ -23,7 +23,8 @@ requirejs.config({
     'blockui':'scripts/assets/jquery.blockui.min',
     'global-app':'scripts/assets/global.app.min',
     'layout':'scripts/assets/layout.min',
-    'quick-sidebar':'scripts/assets/quick-sidebar.min'
+    'quick-sidebar':'scripts/assets/quick-sidebar.min',
+    'login-validate':'scripts/assets/login.validate',
     
   },
   shim: {
@@ -37,8 +38,8 @@ requirejs.config({
     'kendo' :{deps: ['jquery']},
     'bootstrap-hover-dropdown' :{deps: ['jquery']},
     'layout' :{deps: ['jquery','global-app']},
-    'quick-sidebar' :{deps: ['jquery','global-app']}
-    
+    'quick-sidebar' :{deps: ['jquery','global-app']},
+    'login-validate' :{deps: ['jquery']},
   },
   deps:['bootstrap'],
   urlArgs: "bust=" + (new Date()).getTime()  //防止读取缓存，调试用
@@ -62,10 +63,13 @@ require([
 ], function (require,angular) {
     'use strict';
     $(document).ready(function () {
-        App.init();
+        App.init();   //初始化
         Layout.init();
         angular.bootstrap(document, ['app']);
+        
     });
 });
 
-
+define(function(){
+   window.BASEPATH = "http://127.0.0.1:9000/";
+});

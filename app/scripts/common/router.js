@@ -5,12 +5,13 @@ define( ['app'],function (app) {
         app.run(function($rootScope, $state, $stateParams){
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
-            $rootScope.$state.isLogin = true;
+            $rootScope.$state.isLogin = false;
         })
 
-        .config(function ($stateProvider, $urlRouterProvider) {
-
-        console.log(" init router "); 
+        .config(function ($stateProvider, $urlRouterProvider,$httpProvider) {
+      
+        //用户登陆拦截器
+        //$httpProvider.interceptors.push('UserInterceptor');
       
         $urlRouterProvider.otherwise('/index');
 

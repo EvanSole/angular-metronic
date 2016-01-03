@@ -19,11 +19,11 @@ define( ['app'],function (app) {
             .state('login',{
                 url : '/login',
                 views : {
-                          '': {
-                                templateUrl : 'views/login/login.html',
-                                controller  : 'LoginController'
-                              }
+                    '': {
+                          templateUrl : 'views/login/login.html',
+                          controller  : 'LoginController'
                         }
+                }
             })
             .state('index',{
                url : '/index',
@@ -43,36 +43,39 @@ define( ['app'],function (app) {
                }
                
            })
-
            .state('index.user',{
                url : '/user',
                views : {
-                      'main@index.user': {
-                            templateUrl : 'views/system/user.html'
-                      }
+                    'main@index' : {
+                       templateUrl : 'views/system/user.html'
+                    }
                }
                
            })
-
-          
-
-           // .state('index.user',{
-           //     url : '/user',
-           //     templateUrl : 'views/system/user.html'
-           // })
-           // .state('detail',{
-           //     url : '/detail/{articleId}',
-           //     templateUrl : 'views/user-detail.html'
-           // })
-           // .state('role',{
-           //      url : '/role',
-           //      templateUrl : 'views/system/role.html'
-           // })
-           // .state('permission',{
-           //      url : '/permission',
-           //      templateUrl : 'views/system/permission.html'
-           // })
-
+           .state('index.user.edit',{
+               url : '/edit',
+               views : {
+                    'main@index' : {
+                       templateUrl : 'views/system/userEdit.html'
+                    }
+               }
+           })
+           .state('index.role',{
+                url : '/role',
+                views : {
+                    'main@index' : {
+                       templateUrl : 'views/system/role.html'
+                    }
+                }
+           })
+           .state('index.permission',{
+                url : '/permission',
+                views : {
+                    'main@index' : {
+                       templateUrl : 'views/system/permission.html'
+                    }
+                }
+           })
     }]);
 
 

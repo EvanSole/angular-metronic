@@ -1,4 +1,6 @@
 <div class="page-container">
+   
+    <!-- BEGIN LEFT MENU-->
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
 
@@ -15,20 +17,20 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item start ">
-                            <a href="index.html" class="nav-link ">
+                            <a ui-sref="index.user" class="nav-link ">
                                 <i class="icon-bar-chart"></i>
                                 <span class="title">用户</span>
                             </a>
                         </li>
                         <li class="nav-item start ">
-                            <a href="dashboard_2.html" class="nav-link ">
+                            <a ui-sref="role" class="nav-link ">
                                 <i class="icon-bulb"></i>
                                 <span class="title">角色</span>
                                 <span class="badge badge-success">1</span>
                             </a>
                         </li>
                         <li class="nav-item start ">
-                            <a href="dashboard_2.html" class="nav-link ">
+                            <a ui-sref="permission" class="nav-link ">
                                 <i class="icon-bulb"></i>
                                 <span class="title">权限</span>
                             </a>
@@ -91,12 +93,17 @@
             </ul>
         </div>
     </div>
+    <!-- END LEFT MENU-->
 
-   <div ng-include="'views/layout/sidebar_panel.html'"></div>
+    <!-- <div ng-include="'views/layout/sidebar_panel.html'"></div> -->
+
+    <!-- BEGIN RIGHT CONTENT-->
+    <div ui-view="main"/>
+    <!-- END RIGHT CONTENT-->
 
 </div>
 
-<script type="text/javascript" src="scripts/assets/sidebar.menu.js"></script>
+<!-- <script type="text/javascript" src="scripts/assets/sidebar.menu.js"></script> -->
 
 
 

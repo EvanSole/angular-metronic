@@ -2,7 +2,8 @@
 /* Cubic Bezier Transition */
 @media print {
   body {
-    background-color: #fff !important; }
+    background-color: #fff !important; 
+  }
   .page-bar {
     display: none; }
   .page-sidebar-wrapper {

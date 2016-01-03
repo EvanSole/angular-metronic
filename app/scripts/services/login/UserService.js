@@ -7,7 +7,7 @@ define(['scripts/services/services'], function(services) {
 
 	}]);
 
-	services.factory('LoginService', ["$q","$rootScope",function ($q,$rootScope) {
+	services.factory('UserService', ["$q","$rootScope",function ($q,$rootScope) {
 
 
 	}]);

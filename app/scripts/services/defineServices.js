@@ -1,6 +1,6 @@
 define([
 	
-	'./login/LoginService'
+	'./login/UserService'
 
 ], function () {
     'use strict';

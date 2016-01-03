@@ -4,7 +4,7 @@ requirejs.config({
   paths: {
     'jquery': 'bower_components/jquery/jquery.min',
     'angular': 'bower_components/angular/angular.min',
-    'angular-route': 'bower_components/angular-route/angular-route.min',
+    //'angular-route': 'bower_components/angular-route/angular-route.min',
     'angular-resource': 'bower_components/angular-resource/angular-resource.min',
     'angular-cookies': 'bower_components/angular-cookies/angular-cookies.min',
     'angular-sanitize': 'bower_components/angular-sanitize/angular-sanitize.min',
@@ -18,13 +18,17 @@ requirejs.config({
     'require':'bower_components/requirejs/require',
     'app':'scripts/app',
     'router':'scripts/common/router',
+    'basePath':'scripts/basePath',
 
     'bootstrap-hover-dropdown':'scripts/assets/bootstrap-hover-dropdown.min',
     'blockui':'scripts/assets/jquery.blockui.min',
+    'sidebar-menu':'scripts/assets/sidebar.menu',
     'global-app':'scripts/assets/global.app.min',
     'layout':'scripts/assets/layout.min',
     'quick-sidebar':'scripts/assets/quick-sidebar.min',
-    'login-validate':'scripts/assets/login.validate',
+    'login-validate':'scripts/assets/login.validate'
+    
+
     
   },
   shim: {
@@ -39,7 +43,8 @@ requirejs.config({
     'bootstrap-hover-dropdown' :{deps: ['jquery']},
     'layout' :{deps: ['jquery','global-app']},
     'quick-sidebar' :{deps: ['jquery','global-app']},
-    'login-validate' :{deps: ['jquery']},
+    'sidebar-menu' :{deps: ['jquery','global-app']},
+    'login-validate' :{deps: ['jquery']}
   },
   deps:['bootstrap'],
   urlArgs: "bust=" + (new Date()).getTime()  //防止读取缓存，调试用
@@ -55,11 +60,13 @@ require([
     'ui-bootstrap',
     'app',
     'router',
+    'basePath',
     'bootstrap-hover-dropdown',
     'blockui',
     'quick-sidebar',
     'global-app',
-    'layout'
+    'layout',
+    'sidebar-menu'
 ], function (require,angular) {
     'use strict';
     $(document).ready(function () {
@@ -68,8 +75,4 @@ require([
         angular.bootstrap(document, ['app']);
         
     });
-});
-
-define(function(){
-   window.BASEPATH = "http://127.0.0.1:9000/";
 });

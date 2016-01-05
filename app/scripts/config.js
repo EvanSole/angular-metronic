@@ -13,13 +13,12 @@ requirejs.config({
     'bootstrap': 'bower_components/bootstrap/dist/js/bootstrap.min',
     'ui-bootstrap': 'bower_components/angular-bootstrap/ui-bootstrap.min',
     'ui-bootstrap-tpls': 'bower_components/angular-bootstrap/ui-bootstrap-tpls.min',
-    
+    'ng-breadcrumbs':'bower_components/ng-breadcrumbs/ng-breadcrumbs.min',
     'kendo': 'bower_components/kendo/js/kendo.core.min',
     'require':'bower_components/requirejs/require',
     'app':'scripts/app',
     'router':'scripts/common/router',
     'basePath':'scripts/basePath',
-
     'bootstrap-hover-dropdown':'scripts/assets/bootstrap-hover-dropdown.min',
     'blockui':'scripts/assets/jquery.blockui.min',
     'sidebar-menu':'scripts/assets/sidebar.menu',
@@ -28,8 +27,6 @@ requirejs.config({
     'quick-sidebar':'scripts/assets/quick-sidebar.min',
     'login-validate':'scripts/assets/login.validate'
     
-
-    
   },
   shim: {
   	/*** shim 用来处理一些没有遵守requirejs规范的js库,可在里面对它们进行一些依赖声明、初始化操作等*/
@@ -37,6 +34,7 @@ requirejs.config({
     'angular-resource': {deps: ['angular']},
     'ui-router': {deps: ['angular'], exports: 'angular-route'},
     'angular-cookies': {deps: ['angular']},
+    'ng-breadcrumbs': {deps: ['angular']},
     'bootstrap': {deps: ['jquery']},
     'ui-bootstrap': {deps: ['angular']},
     'kendo' :{deps: ['jquery']},
@@ -60,6 +58,7 @@ require([
     'ui-bootstrap',
     'app',
     'router',
+    'ng-breadcrumbs',
     'basePath',
     'bootstrap-hover-dropdown',
     'blockui',

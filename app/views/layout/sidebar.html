@@ -1,5 +1,5 @@
 <div class="page-container">
-   
+    
     <!-- BEGIN LEFT MENU-->
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
@@ -37,7 +37,7 @@
                     </ul>
                 </li>
               
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class=" icon-settings"></i>
                         <span class="title">基础管理</span>
@@ -64,24 +64,25 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item  ">
+                
+                <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-paper-plane"></i>
                         <span class="title">服务监控</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item  ">
+                        <li class="nav-item">
                             <a href="layout_mega_menu_light.html" class="nav-link ">
                                 <span class="title">Light Mega Menu</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
+                        <li class="nav-item">
                             <a href="layout_mega_menu_dark.html" class="nav-link ">
                                 <span class="title">Dark Mega Menu</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
+                        <li class="nav-item">
                             <a href="layout_full_width.html" class="nav-link ">
                                 <span class="title">Full Width Layout</span>
                             </a>
@@ -94,11 +95,19 @@
     </div>
     <!-- END LEFT MENU-->
 
-    <!-- <div ng-include="'views/layout/sidebar_main.html'"></div> -->
-
     <!-- BEGIN RIGHT CONTENT-->
-    <div ui-view="main"/>
-    <!-- END RIGHT CONTENT-->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+
+            <!-- BREADCRUMB NAVIGATION -->
+            <div ng-include="'views/layout/breadcrumb.html'"></div> 
+
+            <!--  CONTENT-->
+            <div ui-view="main"/>
+           
+        </div>
+    </div>
+     <!-- END RIGHT CONTENT-->
 
 </div>
 

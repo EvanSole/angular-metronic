@@ -35,10 +35,12 @@ define( ['app'],function (app) {
                        templateUrl : 'views/layout/header.html'
                    },
                    'sidebar@index' : {
-                       templateUrl : 'views/layout/sidebar.html'
+                       templateUrl : 'views/layout/sidebar.html',
+                       controller  : 'MainController',
+                       label: 'Home'
                    },
                    'main@index' : {
-                       templateUrl : 'views/layout/sidebar_main.html'
+                       templateUrl : 'views/layout/sidebar_portlet.html'
                    }
                }
                
@@ -47,7 +49,9 @@ define( ['app'],function (app) {
                url : '/user',
                views : {
                     'main@index' : {
-                       templateUrl : 'views/system/user.html'
+                       templateUrl : 'views/system/user.html',
+                       controller  : 'UserController',
+                       label: 'User'
                     }
                }
                
@@ -59,12 +63,14 @@ define( ['app'],function (app) {
                        templateUrl : 'views/system/userEdit.html'
                     }
                }
+               
            })
            .state('index.role',{
                 url : '/role',
                 views : {
                     'main@index' : {
-                       templateUrl : 'views/system/role.html'
+                       templateUrl : 'views/system/role.html',
+                       label: 'Role'
                     }
                 }
            })

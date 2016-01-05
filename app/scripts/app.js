@@ -6,6 +6,6 @@ define([
     'scripts/filters/defineFilters'
 ], function(angular) {
     "use strict"
-     return angular.module('app',['ui.router','ui.bootstrap','app.controllers','app.services']);
+     return angular.module('app',['ui.router','ng-breadcrumbs','ui.bootstrap','app.controllers','app.services']);
 });
 

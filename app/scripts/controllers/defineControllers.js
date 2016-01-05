@@ -1,8 +1,9 @@
 
 define([
-	
-   './login/LoginController'
-
+   './MainController',	
+   './login/LoginController',
+   './system/UserController',
+   './system/PortletController'
    
 
 ], function () {

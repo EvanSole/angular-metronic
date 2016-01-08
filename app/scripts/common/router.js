@@ -7,82 +7,81 @@ define( ['app'],function (app) {
             $rootScope.$stateParams = $stateParams;
         }])
 
-        .config(['$stateProvider', '$urlRouterProvider','$httpProvider', 
-                     function ($stateProvider, $urlRouterProvider,$httpProvider) {
+        .config(['$stateProvider', '$urlRouterProvider','$httpProvider',function ($stateProvider, $urlRouterProvider,$httpProvider) {
+        
+          //用户登陆拦截器
+          //$httpProvider.interceptors.push('UserInterceptor');
       
-        //用户登陆拦截器
-        //$httpProvider.interceptors.push('UserInterceptor');
-      
-        $urlRouterProvider.otherwise('/login');
+          $urlRouterProvider.otherwise('/login');
 
-        $stateProvider
-            .state('login',{
-                url : '/login',
-                views : {
-                    '': {
-                          templateUrl : 'views/login/login.html',
-                          controller  : 'LoginController'
-                        }
-                }
-            })
-            .state('index',{
-               url : '/index',
-               views :{
-                   '' : {
-                       templateUrl : 'views/layout/nav.html'
-                   },
-                   'header@index' : {
-                       templateUrl : 'views/layout/header.html'
-                   },
-                   'sidebar@index' : {
-                       templateUrl : 'views/layout/sidebar.html',
-                       controller  : 'MainController',
-                       label: 'Home'
-                   },
-                   'main@index' : {
-                       templateUrl : 'views/layout/sidebar_portlet.html'
-                   }
-               }
-               
-           })
-           .state('index.user',{
-               url : '/user',
-               views : {
-                    'main@index' : {
-                       templateUrl : 'views/system/user.html',
-                       controller  : 'UserController',
-                       label: 'User'
-                    }
-               }
-               
-           })
-           .state('index.user.edit',{
-               url : '/edit',
-               views : {
-                    'main@index' : {
-                       templateUrl : 'views/system/userEdit.html'
-                    }
-               }
-               
-           })
-           .state('index.role',{
-                url : '/role',
-                views : {
-                    'main@index' : {
-                       templateUrl : 'views/system/role.html',
-                       label: 'Role'
-                    }
-                }
-           })
-           .state('index.permission',{
-                url : '/permission',
-                views : {
-                    'main@index' : {
-                       templateUrl : 'views/system/permission.html'
-                    }
-                }
-           })
-    }]);
+          $stateProvider
+              .state('login',{
+                  url : '/login',
+                  views : {
+                      '': {
+                            templateUrl : 'views/login/login.html',
+                            controller  : 'LoginController'
+                          }
+                  }
+              })
+              .state('index',{
+                 url : '/index',
+                 views :{
+                     '' : {
+                         templateUrl : 'views/layout/nav.html'
+                     },
+                     'header@index' : {
+                         templateUrl : 'views/layout/header.html'
+                     },
+                     'sidebar@index' : {
+                         templateUrl : 'views/layout/sidebar.html',
+                         controller  : 'MainController',
+                         label: 'Home'
+                     },
+                     'main@index' : {
+                         templateUrl : 'views/layout/sidebar_portlet.html'
+                     }
+                 }
+                 
+             })
+             .state('index.user',{
+                 url : '/user',
+                 views : {
+                      'main@index' : {
+                         templateUrl : 'views/system/user.html',
+                         controller  : 'UserController',
+                         label: 'User'
+                      }
+                 }
+                 
+             })
+             .state('index.user.edit',{
+                 url : '/edit',
+                 views : {
+                      'main@index' : {
+                         templateUrl : 'views/system/userEdit.html'
+                      }
+                 }
+                 
+             })
+             .state('index.role',{
+                  url : '/role',
+                  views : {
+                      'main@index' : {
+                         templateUrl : 'views/system/role.html',
+                         label: 'Role'
+                      }
+                  }
+             })
+             .state('index.permission',{
+                  url : '/permission',
+                  views : {
+                      'main@index' : {
+                         templateUrl : 'views/system/permission.html'
+                      }
+                  }
+             })
+      }]);
 
 
 

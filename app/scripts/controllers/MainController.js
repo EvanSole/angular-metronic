@@ -6,9 +6,9 @@ define(['scripts/controllers/controllers','scripts/services/services'], function
 
       //$scope.breadcrumbs = { options: {'path':'index/user','label':'用户管理'}};
 
-      $scope.breadcrumbs = [ {'path':'index/user','label':'用户管理'},
-                             {'path':'index/user','label':'编辑'} 
-                            ];
+      $scope.breadcrumbs = [ {'path':'index/user','label':'System'},
+                             {'path':'index/user','label':'Home'} 
+                           ];                  
     
     })
 })

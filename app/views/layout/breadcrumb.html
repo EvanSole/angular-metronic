@@ -3,7 +3,7 @@
     <ul class="page-breadcrumb">
         <li ng-repeat="crumb in breadcrumbs " ng-class="{ active: $last }">
             <a ng-href="#{{ crumb.path }}" ng-bind="crumb.label" ></a>
-            <i ng-show="!$last" class="fa fa-angle-right"></i>
+            <i ng-if="!$last" ng-show="!$last" class="fa fa-angle-right"></i>
         </li>
     </ul>
 </div>

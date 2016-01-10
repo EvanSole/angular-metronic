@@ -20,17 +20,16 @@ requirejs.config({
     'global-app':'scripts/assets/global.app.min',
     'layout':'scripts/assets/layout.min',
     'quick-sidebar':'scripts/assets/quick-sidebar.min',
-    // 'react':'bower_components/react/react.min',
-    // 'react-dom':'bower_components/react/react-dom.min',
-    // 'browser':'bower_components/react/browser.min',
-    'kendo':'bower_components/kendo-ui/js/kendo.all.min',
+    'kendo': 'bower_components/kendo/js/kendo.all.min',
+    'kendo-directives': 'bower_components/kendo/js/kendo.directives',
+
     'underscore':'bower_components/underscore/underscore-min',
     'app':'scripts/app',
     'config':'scripts/config',
     'router':'scripts/common/router',
     'constant':'scripts/common/constant',
-    'sync':'scripts/common/sync'  
-    
+    'sync':'scripts/common/sync',  
+    'commDataSource':'scripts/common/commDataSource'
   },
   shim: {
   	/*** shim 用来处理一些没有遵守requirejs规范的js库,可在里面对它们进行一些依赖声明、初始化操作等*/
@@ -44,11 +43,11 @@ requirejs.config({
     'bootstrap-hover-dropdown' :{deps: ['jquery']},
     'layout' :{deps: ['jquery','global-app']},
     'quick-sidebar' :{deps: ['jquery','global-app']},
-    'kendo' : { exports :'kendo' ,deps: ['angular','jquery']}
-    //'kendo-ui' : { exports :'kendo-ui',deps: ['angular','jquery']}
-    // 'react' : { exports : 'react'},
-    // 'react-dom' : { exports : 'react-dom'},
-    // 'browser' : { exports : 'browser'},
+    'kendo' : { exports :'kendo' ,deps: ['angular','jquery']},
+    'kendo-directives': {deps: ['kendo','angular','jquery']},
+    'sync': { exports :'sync' , deps: ['underscore','jquery']},
+    'commDataSource': { exports :'commDataSource' , deps: ['kendo','sync']}
+    
   },
   deps:['bootstrap'],
   urlArgs: "bust=" + (new Date()).getTime()  //防止读取缓存，调试用
@@ -62,19 +61,23 @@ require([
     'bootstrap',
     'ui-router',
     'ui-bootstrap',
-    'app',
-    'router',
-    'ng-breadcrumbs',
+    'underscore',
     'config',
+    'constant',
+    'ng-breadcrumbs',
+    'bower_components/kendo/js/custom/kendo.web.ext',
+    'bower_components/kendo/js/custom/kendo.validator',
+    'bower_components/kendo/js/custom/kendo.messages.zh-CN',
     'bootstrap-hover-dropdown',
     'blockui',
     'quick-sidebar',
     'global-app',
     'layout',
     'kendo',
-    'constant',
-    'underscore',
-    'sync'
+    'router', 
+    'sync',
+    'app',
+    'commDataSource'
 ], function (require,angular) {
     'use strict';
     $(document).ready(function () {

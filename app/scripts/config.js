@@ -9,7 +9,7 @@ define(['app'],function(app){
         	loginUrl : window.BASEPATH + '/api/login',
             userUrl : window.BASEPATH + '/api/user',
             roleUrl : window.BASEPATH + '/api/role',
-       
+            demoUrl : 'http://127.0.0.1:9000/#/index/user'
      });
 
 });

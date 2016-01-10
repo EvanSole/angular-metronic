@@ -6,8 +6,64 @@
 define(['app', 'jquery', 'underscore'],function(app, $, _ ){
      "use strict";
      app.factory('sync', ['$http', '$q','$rootScope', 'url', function ($http, $q, $rootScope, urlConstant) {
-          
-          return function (url, method, options) {
+        
+
+        function parseData(data) {
+            var paramData = _.clone(data);
+            _.each(_.keys(paramData),function(key){
+                if (_.isObject(paramData[key]) &&
+                        !_.isDate(paramData[key])) {
+                    paramData[key] = parseData(paramData[key]);
+                } else {
+                    paramData[key] = parseBooleanToByte(paramData[key]);
+                    var upKey = key.toUpperCase();
+                    if (upKey.indexOf("TIME") >=0 || upKey.indexOf("DATE") >=0) {
+                        paramData[key] = parseDateToLong(paramData[key]);
+                    }
+                }
+            });
+            return paramData;
+        }
+
+        function parseBooleanToByte(value) {
+            if(value === true) {
+                return 1;
+            } else if (value === false){
+                return 0;
+            } else {
+                return value;
+            }
+        }
+
+        function parseDateToLong(value) {
+            if (!value) {
+                return value;
+            }
+            var longValue = value;
+            if (_.isFunction(value.getTime)) {
+                return value.getTime();
+            } else {
+                try{
+                    var a=value.split(" ");
+                    var d=a[0].split("/");
+
+                    if (a.length>1) {
+                      var t=a[1].split(":");
+                      longValue= new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]).getTime();
+                    } else if (d.length === 3) {
+                      longValue= new Date(d[0],(d[1]-1),d[2]).getTime();
+                    }
+
+                } catch(exception) {
+                    return value;
+                }
+            }
+            return longValue;
+        }
+
+
+
+        return function (url, method, options) {
             var defaultOptions = {
               url: url,
               method: method,
@@ -42,6 +98,7 @@ define(['app', 'jquery', 'underscore'],function(app, $, _ ){
                   var timer = setTimeout(function(){
                     kendo.ui.ExtWaitDialog.show({
                       title: "处理中",
+                      icon: 'k-ext-question',
                       message: "数据处理中,请稍后..." });
                   },1000);
                 }
@@ -51,7 +108,7 @@ define(['app', 'jquery', 'underscore'],function(app, $, _ ){
                       kendo.ui.ExtWaitDialog.hide();
                     }
 
-                    if (data === undefined) {
+                    if (data === undefined || data === null) {
                         deferred.reject(data);
                     } else if(!data.suc) {
                         if (data.resultType === "Confirm") {
@@ -165,7 +222,7 @@ define(['app', 'jquery', 'underscore'],function(app, $, _ ){
                     kendo.ui.ExtAlertDialog.show({
                         title: "错误",
                         width:400,
-                        message: '服务端错误',
+                        message: '服务端错误!',
                         icon: 'k-ext-error' });
                     }
                     console.error("status:" + status);

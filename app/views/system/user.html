@@ -1,32 +1,39 @@
-<div>
-    <div class="row">
-        <div class="col-md-2">
-            <button type="submit" class="btn green" ui-sref="index.user.edit">Add</button>
-        </div>
+ <div class="row" ng-controller="UserController">
+    <div class="col-md-12">
+        <div class="portlet light form-fit bordered">
+            <div class="portlet-title">
+              <panel_heading_search bind-ui="userGrid">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">用户名</label>
+                            <input type="text" class="form-control"> 
+                        </div>
+                    </div>
+                </panel_heading_search>
+            </div>
+
+	        <div class="form-body">
+	            <div kendo-grid="userGrid" options="mainGridOptions"></div>
+	        </div>
+
+       </div>
     </div>
 </div>
 
-<div>
-    <kendo-grid options="mainGridOptions"> 
-	     <div k-detail-template=""> 
-		       <kendo-tabstrip> 
-			       <ul> 
-				        <li class="k-state-active">Orders</li> 
-				        <li>Contact information</li> 
-			       </ul> 
-			       <div> 
-			           <div kendo-grid="" k-options="detailGridOptions(dataItem)"></div> 
-			       </div> 
-			       <div> 
-			         <ul> 
-				         <li>Country: <input ng-model="dataItem.Country"></li> 
-				         <li>City: <input ng-model="dataItem.City"></li> 
-				         <li>Address: {{dataItem.Address}}</li> 
-				         <li>Home phone: {{dataItem.HomePhone}}</li> 
-			         </ul> 
-			       </div> 
-	           </kendo-tabstrip> 
-	     </div> 
-    </kendo-grid> 
-</div>
 
+
+<!-- 新增/编辑模版 -->
+<script id="user-kendo-template" type="text/x-kendo-template">
+    <div class="edit-form-container">
+        <div class="window-form pure-body">
+            <div class="pure-control-group p-b-5">
+                <label>用户编号</label>
+                <input id="tenantNo" name="tenantNo" type="text" required/>
+            </div>
+            <div class="pure-control-group p-b-5">
+                <label>用户名称</label>
+                <input id="description" name="description" type="text" required/>
+            </div>
+        </div>
+    </div>
+</script>

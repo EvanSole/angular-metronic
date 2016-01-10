@@ -49,7 +49,6 @@ define( ['app'],function (app) {
                  views : {
                       'main@index' : {
                          templateUrl : 'views/system/user.html',
-                         controller  : 'UserController',
                          label: 'User'
                       }
                  }

@@ -1,9 +1,23 @@
 
 define(['scripts/controllers/controllers','scripts/services/services'], function(controller) {
     "use strict";
-    controller.controller('UserController',function ($scope, $rootScope, $timeout, $http) {
+    controller.controller('UserController',['$scope','$rootScope','$state', 'sync', 'url','commonDataSource', 
+        function ($scope, $rootScope,$state, $sync, $url, commonDataSource ) {
       
-      console.log(" UserController ... "); 
+        console.log(" UserController ... "); 
+
+         var associateDataSource = new kendo.data.DataSource({
+                    data: []
+                });
+
+         $sync($url.demoUrl, "GET", {wait: false} )
+                .then(function (data) {
+                    //刷新页面
+                    //$state.reload();
+                }, function () {
+                    //$state.reload();
+                });
+
 
 
 	    $scope.mainGridOptions = {
@@ -42,32 +56,5 @@ define(['scripts/controllers/controllers','scripts/services/services'], function
                 }]
         };
 
-        $scope.detailGridOptions = function(dataItem) {
-            return {
-                dataSource: {
-                    type: "odata",
-                    transport: {
-                        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-                    },
-                    serverPaging: true,
-                    serverSorting: true,
-                    serverFiltering: true,
-                    pageSize: 5,
-                    filter: { field: "EmployeeID", operator: "eq", value: dataItem.EmployeeID }
-                },
-
-                scrollable: false,
-                sortable: true,
-                pageable: true,
-                columns: [
-                { field: "OrderID", title:"ID", width: "56px" },
-                { field: "ShipCountry", title:"Ship Country", width: "110px" },
-                { field: "ShipAddress", title:"Ship Address" },
-                { field: "ShipName", title: "Ship Name", width: "190px" }
-                ]
-            };
-        };
-
-
-    })
+    }])
 })

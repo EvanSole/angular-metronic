@@ -1,4 +1,4 @@
-define(['angular','kendo'], function (angular,kendo) {
+define(['angular'], function (angular) {
     'use strict';
     return angular.module('app.controllers', []);
 });
